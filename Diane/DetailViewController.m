@@ -3,7 +3,7 @@
 //  Diane
 //
 //  Created by Dan Wood on 7/5/18.
-//  Copyright © 2018 Karelia Software. All rights reserved.
+//  Copyright © 2018 Dan Wood. All rights reserved.
 //
 
 #import "DetailViewController.h"
