@@ -39,9 +39,7 @@
 	// If appropriate, configure the new managed object.
 	newNote.creationDate = [NSDate date];
 	newNote.modificationDate = [NSDate date];
-	newNote.text = [[NSDate date] description];
-
-	// [self showDetailViewController:
+	newNote.text = @"New Note";
 	
 	// Save the context.
 	NSError *error = nil;

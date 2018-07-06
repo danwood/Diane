@@ -17,10 +17,17 @@
 - (void)configureView {
 	// Update the user interface for the detail item.
 	if (self.detailItem) {
-		self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%@\n\n", self.detailItem.text, self.detailItem.creationDate.description];
+		self.detailDescriptionLabel.text = self.detailItem.creationDate.description;
+		self.detailText.text = self.detailItem.text;
+		
+		self.detailText.delegate = self;
 	}
 }
 
+- (void)textViewDidChange:(UITextView *)textView;
+{
+	self.detailItem.text = self.detailText.text;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
