@@ -34,11 +34,13 @@
 
 - (void)insertNewObject:(id)sender {
 	NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-	Event *newEvent = [[Event alloc] initWithContext:context];
+	Note *newNote = [[Note alloc] initWithContext:context];
 	    
 	// If appropriate, configure the new managed object.
-	newEvent.timestamp = [NSDate date];
-	    
+	newNote.creationDate = [NSDate date];
+	newNote.modificationDate = [NSDate date];
+	newNote.text = @"New Note";
+
 	// Save the context.
 	NSError *error = nil;
 	if (![context save:&error]) {
@@ -55,7 +57,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([[segue identifier] isEqualToString:@"showDetail"]) {
 	    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-	    Event *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	    Note *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	    DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
 	    [controller setDetailItem:object];
 	    controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
@@ -79,8 +81,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-	Event *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	[self configureCell:cell withEvent:event];
+	Note *Note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	[self configureCell:cell withNote:Note];
 	return cell;
 }
 
@@ -107,31 +109,31 @@
 }
 
 
-- (void)configureCell:(UITableViewCell *)cell withEvent:(Event *)event {
-	cell.textLabel.text = event.timestamp.description;
+- (void)configureCell:(UITableViewCell *)cell withNote:(Note *)Note {
+	cell.textLabel.text = Note.text;
 }
 
 
 #pragma mark - Fetched results controller
 
-- (NSFetchedResultsController<Event *> *)fetchedResultsController {
+- (NSFetchedResultsController<Note *> *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
     
-    NSFetchRequest<Event *> *fetchRequest = Event.fetchRequest;
+    NSFetchRequest<Note *> *fetchRequest = Note.fetchRequest;
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
 
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController<Event *> *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController<Note *> *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     
     NSError *error = nil;
@@ -181,11 +183,11 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withEvent:anObject];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withNote:anObject];
             break;
             
         case NSFetchedResultsChangeMove:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withEvent:anObject];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withNote:anObject];
             [tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
     }
