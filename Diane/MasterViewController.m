@@ -39,8 +39,10 @@
 	// If appropriate, configure the new managed object.
 	newNote.creationDate = [NSDate date];
 	newNote.modificationDate = [NSDate date];
-	newNote.text = @"New Note";
+	newNote.text = [[NSDate date] description];
 
+	// [self showDetailViewController:
+	
 	// Save the context.
 	NSError *error = nil;
 	if (![context save:&error]) {
@@ -89,7 +91,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Return NO if you do not want the specified item to be editable.
-	return YES;
+	return NO;
 }
 
 
