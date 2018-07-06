@@ -26,7 +26,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView;
 {
-	self.detailItem.text = self.detailText.text;
+	self.detailItem.text = self.detailText.text;	// sends changes back to detail item but doesn't save
 }
 
 - (void)viewDidLoad {

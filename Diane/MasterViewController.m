@@ -25,6 +25,10 @@
 	self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
+- (void)setEditing:(BOOL)editing {
+	
+	[super setEditing:editing];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
@@ -39,7 +43,7 @@
 	// If appropriate, configure the new managed object.
 	newNote.creationDate = [NSDate date];
 	newNote.modificationDate = [NSDate date];
-	newNote.text = @"New Note";
+	newNote.text = @"";
 	
 	// Save the context.
 	NSError *error = nil;
@@ -109,8 +113,8 @@
 }
 
 
-- (void)configureCell:(UITableViewCell *)cell withNote:(Note *)Note {
-	cell.textLabel.text = Note.text;
+- (void)configureCell:(UITableViewCell *)cell withNote:(Note *)note {
+	cell.textLabel.text = (nil == note || [@"" isEqualToString:note.text]) ? @"Empty Note" : note.text;
 }
 
 
