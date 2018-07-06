@@ -23,11 +23,8 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-}
-
-- (void)setEditing:(BOOL)editing {
 	
-	[super setEditing:editing];
+	// self.tableView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -93,7 +90,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Return NO if you do not want the specified item to be editable.
-	return NO;
+	return YES;
 }
 
 
