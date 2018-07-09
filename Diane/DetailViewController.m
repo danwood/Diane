@@ -17,16 +17,20 @@
 - (void)configureView {
 	// Update the user interface for the detail item.
 	if (self.detailItem) {
-		self.detailDescriptionLabel.text = self.detailItem.creationDate.description;
 		self.detailText.text = self.detailItem.text;
-		
 		self.detailText.delegate = self;
+		self.datePicker.date = self.detailItem.pinnedDate ? self.detailItem.pinnedDate : self.detailItem.creationDate;
 	}
 }
 
 - (void)textViewDidChange:(UITextView *)textView;
 {
 	self.detailItem.text = self.detailText.text;	// sends changes back to detail item but doesn't save
+}
+
+- (IBAction)dateChanged:(id)sender;
+{
+	self.detailItem.pinnedDate = ((UIDatePicker *)sender).date;
 }
 
 - (void)viewDidLoad {

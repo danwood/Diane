@@ -33,15 +33,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="379" width="335" height="20.5"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2aV-pg-Og8">
-                                <rect key="frame" x="20" y="64" width="339" height="300"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2aV-pg-Og8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="560"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="560" id="OyT-mo-Xja"/>
@@ -50,30 +43,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hP3-tA-b0t">
-                                <rect key="frame" x="2" y="505" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hP3-tA-b0t">
+                                <rect key="frame" x="2" y="624" width="359" height="41"/>
                                 <date key="date" timeIntervalSinceReferenceDate="552591324.81348002">
-                                    <!--2018-07-06 5:35:24 PM +0000-->
+                                    <!--2018-07-06 17:35:24 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="IV3-J6-qGx"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
+                            <constraint firstItem="hP3-tA-b0t" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="2" id="53Q-q3-XZF"/>
+                            <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="2aV-pg-Og8" secondAttribute="trailing" id="EUF-85-fqw"/>
+                            <constraint firstItem="hP3-tA-b0t" firstAttribute="top" secondItem="2aV-pg-Og8" secondAttribute="bottom" id="TT9-oc-536"/>
                             <constraint firstItem="2aV-pg-Og8" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="TtK-OC-YrB"/>
-                            <constraint firstItem="VUw-jc-0yf" firstAttribute="bottom" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="50" id="clb-g5-06Y"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="2aV-pg-Og8" secondAttribute="bottom" constant="2" id="hjT-jx-GbO"/>
-                            <constraint firstItem="2aV-pg-Og8" firstAttribute="leading" secondItem="0XM-y9-sOw" secondAttribute="leading" id="l45-3d-VjP"/>
-                            <constraint firstItem="2aV-pg-Og8" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" id="n0l-3q-2G0"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hP3-tA-b0t" secondAttribute="trailing" constant="-2" id="eka-KU-4qK"/>
+                            <constraint firstItem="2aV-pg-Og8" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" id="icc-bF-smN"/>
+                            <constraint firstItem="VUw-jc-0yf" firstAttribute="bottom" secondItem="hP3-tA-b0t" secondAttribute="bottom" constant="2" id="moC-0e-vKu"/>
+                            <constraint firstItem="2aV-pg-Og8" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="vCf-Jr-bFx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="datePicker" destination="hP3-tA-b0t" id="zkQ-YU-IOh"/>
                         <outlet property="detailText" destination="2aV-pg-Og8" id="EB0-eg-GpU"/>
                     </connections>
                 </viewController>

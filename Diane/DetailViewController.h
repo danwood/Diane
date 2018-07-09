@@ -12,8 +12,12 @@
 @interface DetailViewController : UIViewController <UITextViewDelegate>
 
 @property (strong, nonatomic) Note *detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextView *detailText;
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+- (IBAction)dateChanged:(id)sender;
+
 @end
+
 
