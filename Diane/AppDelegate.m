@@ -21,13 +21,7 @@
 	// Override point for customization after application launch.
 
 	UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-
-	NSArray<UITabBarItem *> *tabBarItems = tabBarController.tabBar.items;
 	
-	UITabBarItem *tagsItem = tabBarItems.lastObject;
-	[tagsItem setImage:[UIImage imageNamed:@"hashtag"]];
-	[tagsItem setImage:@"tags"];
-
 	UISplitViewController *splitViewController = [((UISplitViewController *)tabBarController).viewControllers firstObject];
 	
 	splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
