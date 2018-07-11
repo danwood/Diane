@@ -7,15 +7,16 @@
         <attribute name="modificationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="pinnedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="text" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <relationship name="topics" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Topic" inverseName="notes" inverseEntity="Topic" syncable="YES"/>
+        <relationship name="topics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="notes" inverseEntity="Topic" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="Topic" representedClassName="Topic" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="topics" inverseEntity="Note" syncable="YES"/>
     </entity>
     <elements>
         <element name="Note" positionX="142.15625" positionY="249.4296875" width="128" height="120"/>
-        <element name="Topic" positionX="470.890625" positionY="214.23046875" width="128" height="75"/>
+        <element name="Topic" positionX="470.890625" positionY="214.23046875" width="128" height="90"/>
     </elements>
 </model>
