@@ -20,6 +20,9 @@
 		self.detailText.text = self.detailItem.text;
 		self.detailText.delegate = self;
 		self.datePicker.date = self.detailItem.pinnedDate ? self.detailItem.pinnedDate : self.detailItem.creationDate;
+
+		[self.datePicker setValue:@YES forKey:@"highlightsToday"];
+
 	}
 }
 
