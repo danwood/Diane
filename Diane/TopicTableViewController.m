@@ -34,23 +34,27 @@
 - (void)insertNewObject:(id)sender {
 	
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New Topic"
-																   message:@"Enter one or two word topic" preferredStyle:UIAlertControllerStyleAlert];
-	[alert addTextFieldWithConfigurationHandler:^(UITextField *myField) {
-		
+																   message:@"Enter one or two word topic"
+															preferredStyle:UIAlertControllerStyleAlert];
+	[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+		textField.delegate = self;
 	}];
 	
-	UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-														  handler:^(UIAlertAction * action) {}];
 	
-	[alert addAction:defaultAction];
-	[self presentViewController:alert animated:YES completion:^{
 
+	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+	[alert addAction:cancelAction];
+
+	
+	self.okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+														  handler:^(UIAlertAction * action)
+	{
 		NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
 		Topic *newTopic = [[Topic alloc] initWithContext:context];
 		
 		// If appropriate, configure the new managed object.
 		newTopic.creationDate = [NSDate date];
-		newTopic.text = @"";
+		newTopic.text = [alert.textFields.firstObject.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 		
 		// Save the context.
 		NSError *error = nil;
@@ -60,10 +64,23 @@
 			NSLog(@"Unresolved error %@, %@", error, error.userInfo);
 			abort();
 		}
+	}];
+	self.okAction.enabled = NO;
+	
+	[alert addAction:self.okAction];
+	
+	[self presentViewController:alert animated:YES completion:^{
 
+		NSLog(@"End of present");
 	}];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	
+	NSString *finalString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+	[self.okAction setEnabled:(finalString.length >= 2)];
+	return YES;
+}
 
 
 #pragma mark - Table View

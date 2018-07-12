@@ -10,10 +10,12 @@
 #import <CoreData/CoreData.h>
 #import "Diane+CoreDataModel.h"
 
-@interface TopicTableViewController : UITableViewController  <NSFetchedResultsControllerDelegate>
+@interface TopicTableViewController : UITableViewController  <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController<Topic *> *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+
+@property (strong, nonatomic) UIAlertAction *okAction;
 @end
 
