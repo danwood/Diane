@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "MasterViewController.h"
+#import "TopicTableViewController.h"
+
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -22,7 +24,7 @@
 
 	UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
 	
-	UISplitViewController *splitViewController = [((UISplitViewController *)tabBarController).viewControllers firstObject];
+	UISplitViewController *splitViewController = [tabBarController.viewControllers firstObject];
 	
 	splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 	
@@ -33,6 +35,10 @@
 	UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
 	MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
 	controller.managedObjectContext = self.persistentContainer.viewContext;
+	
+	TopicTableViewController *topicController = [tabBarController.viewControllers lastObject];
+	topicController.managedObjectContext = self.persistentContainer.viewContext;
+
 	return YES;
 }
 
