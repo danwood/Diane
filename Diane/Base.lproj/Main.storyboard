@@ -80,7 +80,7 @@
         <!--Topics-->
         <scene sceneID="Nhz-5P-wBV">
             <objects>
-                <tableViewController id="voL-mp-4Cl" sceneMemberID="viewController">
+                <tableViewController id="voL-mp-4Cl" customClass="TopicTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UiW-hB-MRG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
