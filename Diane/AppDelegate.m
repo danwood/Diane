@@ -36,7 +36,8 @@
 	MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
 	controller.managedObjectContext = self.persistentContainer.viewContext;
 	
-	TopicTableViewController *topicController = [tabBarController.viewControllers lastObject];
+	UINavigationController *topicNavigationController = [tabBarController.viewControllers lastObject];
+	TopicTableViewController *topicController = topicNavigationController.topViewController;
 	topicController.managedObjectContext = self.persistentContainer.viewContext;
 
 	return YES;
