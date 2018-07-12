@@ -32,21 +32,36 @@
 
 
 - (void)insertNewObject:(id)sender {
-	NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-	Topic *newTopic = [[Topic alloc] initWithContext:context];
 	
-	// If appropriate, configure the new managed object.
-	newTopic.creationDate = [NSDate date];
-	newTopic.text = @"";
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New Topic"
+																   message:@"Enter one or two word topic" preferredStyle:UIAlertControllerStyleAlert];
+	[alert addTextFieldWithConfigurationHandler:^(UITextField *myField) {
+		
+	}];
 	
-	// Save the context.
-	NSError *error = nil;
-	if (![context save:&error]) {
-		// Replace this implementation with code to handle the error appropriately.
-		// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-		NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-		abort();
-	}
+	UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+														  handler:^(UIAlertAction * action) {}];
+	
+	[alert addAction:defaultAction];
+	[self presentViewController:alert animated:YES completion:^{
+
+		NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+		Topic *newTopic = [[Topic alloc] initWithContext:context];
+		
+		// If appropriate, configure the new managed object.
+		newTopic.creationDate = [NSDate date];
+		newTopic.text = @"";
+		
+		// Save the context.
+		NSError *error = nil;
+		if (![context save:&error]) {
+			// Replace this implementation with code to handle the error appropriately.
+			// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+			NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+			abort();
+		}
+
+	}];
 }
 
 
