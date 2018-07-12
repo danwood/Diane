@@ -37,7 +37,7 @@
 	controller.managedObjectContext = self.persistentContainer.viewContext;
 	
 	UINavigationController *topicNavigationController = [tabBarController.viewControllers lastObject];
-	TopicTableViewController *topicController = topicNavigationController.topViewController;
+	TopicTableViewController *topicController = (TopicTableViewController *)topicNavigationController.topViewController;
 	topicController.managedObjectContext = self.persistentContainer.viewContext;
 
 	return YES;
@@ -77,7 +77,7 @@
 }
 
 
-#pragma mark - Split view
+#pragma mark - Split view Delegate
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
     if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] && ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)) {
