@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0504B120FD1D31008B2225 /* EditableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0504B020FD1D31008B2225 /* EditableListViewController.m */; };
 		CEF6CEAB20F3FBEC004EC45C /* TopicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF6CEA920F3FBEC004EC45C /* TopicTableViewController.m */; };
 		CEF6DBD520EEA9B000DC3F8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF6DBD420EEA9B000DC3F8D /* AppDelegate.m */; };
 		CEF6DBD820EEA9B000DC3F8D /* Diane.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEF6DBD620EEA9B000DC3F8D /* Diane.xcdatamodeld */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE0504AF20FD1D31008B2225 /* EditableListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableListViewController.h; sourceTree = "<group>"; };
+		CE0504B020FD1D31008B2225 /* EditableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableListViewController.m; sourceTree = "<group>"; };
 		CEF6CEA920F3FBEC004EC45C /* TopicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTableViewController.m; sourceTree = "<group>"; };
 		CEF6CEAA20F3FBEC004EC45C /* TopicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTableViewController.h; sourceTree = "<group>"; };
 		CEF6DBD020EEA9B000DC3F8D /* Diane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diane.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +118,8 @@
 				CEF6DBDA20EEA9B000DC3F8D /* MasterViewController.m */,
 				CEF6DBDC20EEA9B000DC3F8D /* DetailViewController.h */,
 				CEF6DBDD20EEA9B000DC3F8D /* DetailViewController.m */,
+				CE0504AF20FD1D31008B2225 /* EditableListViewController.h */,
+				CE0504B020FD1D31008B2225 /* EditableListViewController.m */,
 				CEF6CEAA20F3FBEC004EC45C /* TopicTableViewController.h */,
 				CEF6CEA920F3FBEC004EC45C /* TopicTableViewController.m */,
 				CEF6DBDF20EEA9B000DC3F8D /* Main.storyboard */,
@@ -281,6 +286,7 @@
 				CEF6DBDB20EEA9B000DC3F8D /* MasterViewController.m in Sources */,
 				CEF6DBD820EEA9B000DC3F8D /* Diane.xcdatamodeld in Sources */,
 				CEF6DBDE20EEA9B000DC3F8D /* DetailViewController.m in Sources */,
+				CE0504B120FD1D31008B2225 /* EditableListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

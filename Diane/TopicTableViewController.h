@@ -10,7 +10,9 @@
 #import <CoreData/CoreData.h>
 #import "Diane+CoreDataModel.h"
 
-@interface TopicTableViewController : UITableViewController  <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
+#import "EditableListViewController.h"
+
+@interface TopicTableViewController : EditableListViewController  <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController<Topic *> *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
